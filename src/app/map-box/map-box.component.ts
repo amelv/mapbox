@@ -17,7 +17,7 @@ export class MapBoxComponent implements OnInit {
   style = 'mapbox://styles/mapbox/outdoors-v9';
   lat = 37.75;
   lng = -122.41;
-  message = "Hello México";
+  message = "Hello Mexico";
 
   // Data
   source: any;
