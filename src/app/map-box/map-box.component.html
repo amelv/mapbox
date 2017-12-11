@@ -1,8 +1,22 @@
-<input type="text" [(ngModel)]="message" placeholder="your message...">
-<h1>Markers</h1>
-
-<div *ngFor="let marker of markers">
-  <button (click)="flyTo(marker)">{{ marker.properties.message }}</button>
-  <button (click)="removeMarker(marker)">Delete</button>
+<div class="row">
+  <div class="col s3">
+    
+    <div class="input-field col s12">
+      <input type="text" id="message" [(ngModel)]="message" placeholder="Your place..." class="validate">
+      <label class="active" for="message">Name of the place:</label>
+    </div>
+    
+    <h2>Markers</h2>
+    <ul class="collection" *ngFor="let marker of markers">
+      <li class="collection-item">
+        <a (click)="flyTo(marker)" href="#!" >{{ marker.properties.message }}</a>
+        <a (click)="removeMarker(marker)" href="#!" class="secondary-content">
+          <i class="material-icons">clear</i>
+        </a>
+      </li>
+    </ul>
+  </div>
+  <div class="col s9">    
+    <div class="map" id="map"></div>
+  </div>
 </div>
-<div class="map" id="map"></div>
