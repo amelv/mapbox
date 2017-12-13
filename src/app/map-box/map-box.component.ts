@@ -106,14 +106,18 @@ export class MapBoxComponent implements OnInit {
         }
       });
 
-
     })
 
   }
 
   removeMarker(marker) {
-    console.log('Remove', marker.$key);
-    this.mapService.removeMarker(marker.$key);
+    this.mapService.removeMarker(marker.key)
+      .then(function(resp){
+        console.log("Removed!");
+      })
+      .catch(function(error){
+        console.log(error);
+      });
   }
 
   flyTo(data: GeoJson) {

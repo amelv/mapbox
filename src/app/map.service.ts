@@ -23,6 +23,7 @@ export class MapService {
   }
 
   removeMarker($key: string) {
+    console.log('Remove: ', $key);
     return this.db.object('/markers' + $key).remove();
   }
 
