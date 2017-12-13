@@ -1,3 +1,4 @@
+import { Subscription } from 'rxjs/Subscription';
 import { Component, OnInit } from '@angular/core';
 import * as mapboxgl from 'mapbox-gl';
 import { MapService } from '../map.service';
@@ -27,10 +28,9 @@ export class MapBoxComponent implements OnInit {
 
   ngOnInit() {
     // Get markers from mapService
-    this.mapService.getMarkers().valueChanges().subscribe(markers => {
-      this.markers = markers;
-    });    
+    this.mapService.getMarkers().subscribe(markers => this.markers = markers);
 
+    // Initialize creation of map
     this.initializeMap();
   }
 

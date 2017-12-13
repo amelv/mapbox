@@ -12,8 +12,10 @@ export class MapService {
     mapboxgl.accessToken = environment.mapbox.accessToken;
   }
 
-  getMarkers(): AngularFireList<any> {
-    return this.db.list('/markers');
+  getMarkers() {
+    return this.db.list('markers').snapshotChanges().map(actions => {      
+      return actions.map(action => ({ key: action.key, ...action.payload.val() }));
+    });
   }
 
   createMarker(data: GeoJson) {
