@@ -1,7 +1,7 @@
 import { Subscription } from 'rxjs/Subscription';
 import { Component, OnInit } from '@angular/core';
 import * as mapboxgl from 'mapbox-gl';
-import { MapService } from '../map.service';
+import { MapService } from '../services/map.service';
 import { GeoJson, FeatureCollection } from '../map';
 import { Observable } from 'rxjs/Observable';
 import { AngularFirestore } from 'angularfire2/firestore';
