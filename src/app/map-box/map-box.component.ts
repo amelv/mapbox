@@ -122,7 +122,8 @@ export class MapBoxComponent implements OnInit {
 
   flyTo(data: GeoJson) {
     this.map.flyTo({
-      center: data.geometry.coordinates
+      center: data.geometry.coordinates,
+      zoom: 13,
     })
   }
 
