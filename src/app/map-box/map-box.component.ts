@@ -62,12 +62,17 @@ export class MapBoxComponent implements OnInit {
     // Add map controls
     this.map.addControl(new mapboxgl.NavigationControl());
 
-    // Add marker on click
+    // Set point
     this.map.on('click', (event) => {
-      const coordinates = [event.lngLat.lng, event.lngLat.lat]
-      const newMarker = new GeoJson(coordinates, { message: this.message });
-      this.mapService.createMarker(newMarker);
-    })
+      this.lat = event.lngLat.lat;
+      this.lng = event.lngLat.lng;
+
+      this.map.flyTo({
+        center: [this.lng, this.lat],
+        zoom: 17
+      });
+
+    });
 
     // Add realtime data on map load
     this.map.on('load', (event) => {
@@ -108,6 +113,20 @@ export class MapBoxComponent implements OnInit {
 
     })
 
+  }
+
+  createMarker() {
+
+    // Check duplicate row
+    let duplicate = this.markers.filter(item => item.properties.message === this.message );
+    if (duplicate.length > 0) {
+      console.log("Duplicated!");
+      return;
+    }
+
+    const coordinates = [this.lng, this.lat]
+    const newMarker = new GeoJson(coordinates, { message: this.message });
+    this.mapService.createMarker(newMarker);
   }
 
   removeMarker(marker) {

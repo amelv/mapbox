@@ -1,12 +1,32 @@
 <div class="row">
   <div class="col s3">
+        
+      <div class="card">
+        <div class="card-content">
+          <span class="card-title">Add marker</span>
+          
+          <div class="input-field col s12">
+            <input type="text" id="message" [(ngModel)]="message" placeholder="Your place..." class="validate">
+            <label class="active" for="message">Name of the place:</label>
+          </div>
+
+          <div class="switch">
+            <label>
+              Close
+              <input type="checkbox" [(ngModel)]="status">
+              <span class="lever"></span>
+              Open
+            </label>
+          </div>
+          
+        </div>
+        <div class="card-action right-align">
+          <a class="waves-effect btn" (click)="createMarker()"><i class="material-icons right">add_location</i>Add</a>
+        </div>
+      </div>
+      
     
-    <div class="input-field col s12">
-      <input type="text" id="message" [(ngModel)]="message" placeholder="Your place..." class="validate">
-      <label class="active" for="message">Name of the place:</label>
-    </div>
-    
-    <h2>Markers</h2>
+    <h4>Markers</h4>
     <ul class="collection" *ngFor="let marker of markers">
       <li class="collection-item">
         <a (click)="flyTo(marker)" href="#!" >{{ marker.properties.message }}</a>
